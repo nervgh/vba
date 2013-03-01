@@ -88,6 +88,10 @@ Private Function DefaultRequest(ByVal Url As String) As Object
     
     With DefaultRequest
         .Open "GET", Url, False
-        .Send Null
+        
+        ' no internet connection
+        On Error Resume Next
+            .Send Null
+        On Error GoTo 0
     End With
 End Function
